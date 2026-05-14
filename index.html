@@ -249,9 +249,13 @@
 </head>
 <body>
 
-<audio id="bgMusic" preload="metadata" crossorigin="anonymous">
-    <source src="https://docs.google.com/uc?export=open&id=1Y2ai-AGCDhLpt_oVYiuASKiByUgvLbHA" type="audio/mpeg">
-</audio>
+<iframe
+    id="musicFrame"
+    src="https://drive.google.com/file/d/1Y2ai-AGCDhLpt_oVYiuASKiByUgvLbHA/preview"
+    width="0"
+    height="0"
+    allow="autoplay">
+</iframe>
 
 <div class="invite-wrapper">
 
@@ -333,8 +337,11 @@
 </div>
 
 <script>
-   const bgMusic = document.getElementById('bgMusic');
-const musicBtn = document.getElementById('musicBtn');
+  const musicBtn = document.getElementById('musicBtn');
+const musicFrame = document.getElementById('musicFrame');
+
+let isPlaying = false;
+
 const photoContainer = document.getElementById('photoContainer');
 
 const photoUrl =
@@ -342,22 +349,20 @@ const photoUrl =
 
 photoContainer.innerHTML = `<img src="${photoUrl}" alt="Neil">`;
 
-musicBtn.addEventListener('click', async function(e) {
+musicBtn.addEventListener('click', function(e) {
     e.stopPropagation();
 
-    try {
-        if (bgMusic.paused) {
-            await bgMusic.play();
-            musicBtn.textContent = '⏸️';
-            musicBtn.classList.add('playing');
-        } else {
-            bgMusic.pause();
-            musicBtn.textContent = '🔊';
-            musicBtn.classList.remove('playing');
-        }
-    } catch (err) {
-        console.error('Audio error:', err);
-        alert('Google Drive audio playback failed.');
+    if (!isPlaying) {
+        musicFrame.style.width = "1px";
+        musicFrame.style.height = "1px";
+        musicBtn.textContent = '⏸️';
+        musicBtn.classList.add('playing');
+        isPlaying = true;
+    } else {
+        musicFrame.src = musicFrame.src;
+        musicBtn.textContent = '🔊';
+        musicBtn.classList.remove('playing');
+        isPlaying = false;
     }
 });
 
