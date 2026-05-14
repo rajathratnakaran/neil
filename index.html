@@ -252,9 +252,10 @@
 <iframe
     id="musicFrame"
     src="https://drive.google.com/file/d/1Y2ai-AGCDhLpt_oVYiuASKiByUgvLbHA/preview"
-    width="0"
-    height="0"
-    allow="autoplay">
+    width="300"
+    height="60"
+    allow="autoplay"
+    style="position:absolute; left:-9999px;">
 </iframe>
 
 <div class="invite-wrapper">
@@ -338,11 +339,10 @@
 
 <script>
   const musicBtn = document.getElementById('musicBtn');
+const photoContainer = document.getElementById('photoContainer');
 const musicFrame = document.getElementById('musicFrame');
 
 let isPlaying = false;
-
-const photoContainer = document.getElementById('photoContainer');
 
 const photoUrl =
     'https://drive.google.com/thumbnail?id=19CR79catCbb6H82Q6Q9mQ0P5VWZWeNkD&sz=w1200';
@@ -353,13 +353,14 @@ musicBtn.addEventListener('click', function(e) {
     e.stopPropagation();
 
     if (!isPlaying) {
-        musicFrame.style.width = "1px";
-        musicFrame.style.height = "1px";
+        musicFrame.src =
+            'https://drive.google.com/file/d/1Y2ai-AGCDhLpt_oVYiuASKiByUgvLbHA/preview?autoplay=1';
+
         musicBtn.textContent = '⏸️';
         musicBtn.classList.add('playing');
         isPlaying = true;
     } else {
-        musicFrame.src = musicFrame.src;
+        musicFrame.src = '';
         musicBtn.textContent = '🔊';
         musicBtn.classList.remove('playing');
         isPlaying = false;
