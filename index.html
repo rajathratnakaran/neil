@@ -19,7 +19,7 @@ body{font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#fff6ea 
 .confetti-container{z-index:19}
 .header,.photo-section,.divider,.invitation-text,.details-section,.rsvp-section,.footer{position:relative;z-index:5}
 .header{background:linear-gradient(135deg,#FFE8D6 0%,#FFD6C3 100%);padding:28px 20px 24px;text-align:center;border-radius:28px 28px 0 0}
-.header-title{font-family:'Fredoka',sans-serif;font-size:52px;color:#FF6B6B;animation:pulseTitle 2s infinite}
+.header-title{font-family:'Fredoka',sans-serif;font-size:52px;color:#FF6B6B;animation:pulseTitle 2.4s infinite, titleWobble 6s ease-in-out infinite}
 .header-subtitle{color:#8D6E63;font-weight:500;margin-top:4px}
 .birthday-stars{margin-top:8px;font-size:18px;animation:twinkle 2s infinite}
 .photo-section{padding:24px 20px}
@@ -32,18 +32,18 @@ body{font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#fff6ea 
 .divider{width:80px;height:2px;background:#FFD7B5;margin:24px auto}
 .invitation-text{padding:0 20px;text-align:center}
 .invitation-intro{font-size:15px;line-height:1.8;color:#666}
-.details-section{padding:24px 20px}
+.details-section{padding:18px 20px 8px}
 .details-title{text-align:center;font-family:'Fredoka',sans-serif;font-size:24px;color:#FF6B6B;margin-bottom:18px}
-.detail-item{display:flex;gap:12px;padding:14px;border-radius:14px;border:2px solid #FFE0B2;background:#fff;margin-bottom:12px}
-.detail-label{font-size:11px;color:#FF6B6B;font-weight:700;text-transform:uppercase}
-.detail-value{font-size:14px;color:#444;font-weight:600}
-.rsvp-section{margin:0 20px 24px;padding:20px;border-radius:18px;background:linear-gradient(135deg,#FFF3E0 0%,#FFE8CC 100%);border:2px dashed #FFB74D;text-align:center}
+.detail-item{display:flex;align-items:center;justify-content:center;gap:12px;padding:14px;border-radius:14px;border:2px solid #FFE0B2;background:#fff;margin-bottom:10px;text-align:center}
+.detail-label{font-size:11px;color:#FF6B6B;font-weight:700;text-transform:uppercase;text-align:center}
+.detail-value{font-size:14px;color:#444;font-weight:600;text-align:center}
+.rsvp-section{margin:8px 20px 24px;padding:20px;border-radius:18px;background:linear-gradient(135deg,#FFF3E0 0%,#FFE8CC 100%);border:2px dashed #FFB74D;text-align:center}
 .rsvp-title{font-family:'Fredoka',sans-serif;color:#FF6B6B;font-size:20px;margin-bottom:12px}
-.rsvp-button{width:100%;border:none;border-radius:14px;padding:14px;background:linear-gradient(135deg,#FF6B6B 0%,#FF5252 100%);color:#fff;font-size:15px;font-weight:600;cursor:pointer;animation:bounceButton 2s infinite}
+.rsvp-button{width:100%;border:none;border-radius:14px;padding:14px;background:linear-gradient(135deg,#FF6B6B 0%,#FF5252 100%);color:#fff;font-size:15px;font-weight:600;cursor:pointer;animation:bounceButton 2s infinite;transition:transform .2s ease, box-shadow .2s ease}.rsvp-button:hover,.rsvp-button:active{transform:scale(1.03);box-shadow:0 10px 24px rgba(255,82,82,.35)}
 .rsvp-deadline{margin-top:10px;color:#FF6B6B;font-size:12px}
 .footer{background:linear-gradient(135deg,#FF6B6B 0%,#FF5252 100%);color:#fff;text-align:center;padding:16px;font-family:'Fredoka',sans-serif;border-radius:0 0 28px 28px}
 .balloon,.sparkle,.elephant,.teddy,.cake{position:absolute;animation-timing-function:ease-in-out;animation-iteration-count:infinite;filter:drop-shadow(0 4px 10px rgba(0,0,0,.15))}
-.balloon{font-size:42px;animation:floatBalloon 8s infinite}
+.balloon{font-size:42px;animation:floatBalloon 10s infinite}
 .balloon1{left:-2%;top:8%}
 .balloon2{right:-2%;top:18%;animation-delay:2s}
 .balloon3{left:8%;bottom:18%;animation-delay:4s}
@@ -63,6 +63,7 @@ body{font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#fff6ea 
 @keyframes teddyBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}
 @keyframes cakeSpin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
 @keyframes pulseTitle{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+@keyframes titleWobble{0%,100%{transform:rotate(0deg)}25%{transform:rotate(-2deg)}75%{transform:rotate(2deg)}}
 @keyframes bounceButton{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
 @keyframes photoGlow{0%,100%{box-shadow:0 8px 20px rgba(0,0,0,.12)}50%{box-shadow:0 8px 28px rgba(255,107,107,.45)}}
 @keyframes photoFloat{0%,100%{transform:translateY(0px) rotate(0deg)}25%{transform:translateY(-6px) rotate(-1deg)}50%{transform:translateY(-10px) rotate(0.8deg)}75%{transform:translateY(-4px) rotate(1deg)}}
@@ -78,6 +79,7 @@ body{font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#fff6ea 
 <body>
 <div class="invite-wrapper">
 <div class="floating-decor">
+<div class="elephant" style="right:-3%;top:12%;font-size:38px;animation-delay:1s;">🐘</div>
 <div class="balloon balloon1">🎈</div>
 <div class="balloon balloon2">🎈</div>
 <div class="balloon balloon3">🎈</div>
@@ -90,12 +92,12 @@ body{font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#fff6ea 
 <div class="cake">🎂</div>
 </div>
 <div class="confetti-container"></div>
-<div class="header"><div class="header-title">ONE!</div><div class="header-subtitle">Neil is turning 1 💛</div><div class="birthday-stars">⭐ ⭐ ⭐</div></div>
+<div class="header"><div class="header-title">ONE!</div><div class="header-subtitle">Neil turns 1 💛</div><div class="birthday-stars">⭐ 🎈 ⭐</div></div>
 <div class="photo-section"><div class="photo-card"><div class="photo-frame" id="photoContainer"></div><div class="guest-greeting" id="guestGreeting"></div><div class="personal-message" id="guestMessage"></div><div id="memoryContainer"></div></div></div>
 <div class="divider"></div>
-<div class="invitation-text"><div class="invitation-intro"><strong>Radhika & Rajath</strong> joyfully invite you to celebrate the first year of their little sunshine ☀️</div></div>
-<div class="details-section"><div class="details-title">🎈 Party Details</div><div class="detail-item"><div>📅</div><div><div class="detail-label">Date</div><div class="detail-value">Saturday, 23 May 2026</div></div></div><div class="detail-item"><div>⏰</div><div><div class="detail-label">Time</div><div class="detail-value">12:00 PM onwards</div></div></div><div class="detail-item"><div>📍</div><div><div class="detail-label">Venue</div><div class="detail-value">Maize & Malt</div><div>Mahadevapura, Bengaluru</div></div></div></div>
-<div class="rsvp-section"><div class="rsvp-title">Can't wait to see you! 🎉</div><button class="rsvp-button" onclick="handleRSVP()">RSVP on WhatsApp 💛</button><div class="rsvp-deadline">Please confirm by 20th May</div></div>
+<div class="invitation-text"><div class="invitation-intro"><strong>Radhika & Rajath</strong> warmly invite you to join us for a cozy birthday lunch as we celebrate Neil turning one — an afternoon of good food, warm conversations, cherished company, and a sweet little cake-cutting moment 🎂💛</div></div>
+<div class="details-section"><div class="details-title">🍽️ Birthday Lunch Details</div><div class="detail-item"><div>📅</div><div><div class="detail-label">Date</div><div class="detail-value">Saturday, 23 May 2026</div></div></div><div class="detail-item"><div>⏰</div><div><div class="detail-label">Time</div><div class="detail-value">12:00 PM onwards</div></div></div><div class="detail-item"><div>📍</div><div><div class="detail-label">Venue</div><div class="detail-value">Maize & Malt <a href="https://share.google/xdh801Atlz30immJg" target="_blank" style="font-size:12px;color:#8D6E63;text-decoration:none;font-weight:500;margin-left:4px;">view map</a></div><div>Mahadevapura, Bengaluru</div></div></div></div>
+<div class="rsvp-section"><div class="rsvp-title">We'd love to celebrate together 💛</div><button class="rsvp-button" onclick="handleRSVP()">RSVP on WhatsApp 💛</button><div class="rsvp-deadline">Please confirm by 20th May</div></div>
 <div class="footer">✨ Made with Love for Neil ✨</div>
 </div>
 <script>
@@ -106,10 +108,10 @@ default:{name:'Friend',message:'Join us as we celebrate Neil turning ONE! 💛',
 };
 const params=new URLSearchParams(window.location.search);
 const guest=guests[params.get('guest')]||guests.default;
-document.getElementById('guestGreeting').textContent=`Dear ${guest.name} 💛`;
+const greeting=document.getElementById('guestGreeting');const fullText=`Dear ${guest.name} 💛`;greeting.textContent='';let i=0;function typeGreeting(){if(i<fullText.length){greeting.textContent+=fullText.charAt(i);i++;setTimeout(typeGreeting,70);}}typeGreeting();
 document.getElementById('guestMessage').textContent=guest.message;
 document.getElementById('photoContainer').innerHTML=`<img src="${guest.mediaUrl}" alt="${guest.name}">`;
-function handleRSVP(){const message=encodeURIComponent("Hi Radhika & Rajath! I'm coming to Neil's 1st Birthday celebration! 🎉🎂");window.open(`https://wa.me/918589812323?text=${message}`,'_blank');}
+function handleRSVP(){const message=encodeURIComponent("Hi Radhika & Rajath! Looking forward to joining Neil's birthday lunch celebration 💛🎂");window.open(`https://wa.me/918589812323?text=${message}`,'_blank');}
 </script>
 </body>
 </html>
