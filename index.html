@@ -12,9 +12,37 @@
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#fff6ea 0%,#f5ebdf 100%);min-height:100vh;display:flex;justify-content:center;padding:16px;position:relative;overflow-x:hidden}
-.floating-decor{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
-.invite-wrapper{width:100%;max-width:500px;background:white;border-radius:28px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.15);position:relative;z-index:2}
+body{
+    font-family:'Poppins',sans-serif;
+    background:linear-gradient(135deg,#fff6ea 0%,#f5ebdf 100%);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    padding:16px;
+    position:relative;
+    overflow-x:hidden;
+    overflow-y:auto;
+}
+.floating-decor{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+    overflow:hidden;
+    z-index:1;
+}
+.invite-wrapper{
+    width:100%;
+    max-width:500px;
+    background:white;
+    border-radius:28px;
+    overflow:hidden;
+    box-shadow:0 20px 60px rgba(0,0,0,0.15);
+    position:relative;
+    z-index:10;
+}
 .header{background:linear-gradient(135deg,#FFE8D6 0%,#FFD6C3 100%);padding:28px 20px 24px;text-align:center}
 .header-title{font-family:'Fredoka',sans-serif;font-size:52px;color:#FF6B6B;animation:pulseTitle 2s infinite}
 .header-subtitle{color:#8D6E63;font-weight:500;margin-top:4px}
@@ -22,7 +50,17 @@ body{font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#fff6ea 
 .photo-section{padding:24px 20px}.photo-card{background:linear-gradient(135deg,#FFF8F3 0%,#FFEEE0 100%);border:3px dashed #FFD7B5;border-radius:22px;padding:18px;text-align:center}
 .photo-frame{width:100%;max-width:290px;height:290px;margin:0 auto 16px;border-radius:18px;overflow:hidden;background:#eee;border:4px solid white;box-shadow:0 8px 20px rgba(0,0,0,0.12);animation:photoGlow 4s infinite}
 .photo-frame img{width:100%;height:100%;object-fit:cover}.guest-greeting{font-family:'Fredoka',sans-serif;font-size:28px;color:#FF6B6B;margin-bottom:10px}.personal-message{font-size:14px;color:#5D4037;line-height:1.7;font-style:italic}.memory-btn{margin-top:16px;display:inline-block;background:#FF6B6B;color:white;text-decoration:none;padding:12px 18px;border-radius:12px;font-weight:600}.divider{width:80px;height:2px;background:#FFD7B5;margin:24px auto}.invitation-text{padding:0 20px;text-align:center}.invitation-intro{font-size:15px;line-height:1.8;color:#666}.details-section{padding:24px 20px}.details-title{text-align:center;font-family:'Fredoka',sans-serif;font-size:24px;color:#FF6B6B;margin-bottom:18px}.detail-item{display:flex;gap:12px;padding:14px;border-radius:14px;border:2px solid #FFE0B2;background:white;margin-bottom:12px}.detail-label{font-size:11px;color:#FF6B6B;font-weight:700;text-transform:uppercase}.detail-value{font-size:14px;color:#444;font-weight:600}.rsvp-section{margin:0 20px 24px;padding:20px;border-radius:18px;background:linear-gradient(135deg,#FFF3E0 0%,#FFE8CC 100%);border:2px dashed #FFB74D;text-align:center}.rsvp-title{font-family:'Fredoka',sans-serif;color:#FF6B6B;font-size:20px;margin-bottom:12px}.rsvp-button{width:100%;border:none;border-radius:14px;padding:14px;background:linear-gradient(135deg,#FF6B6B 0%,#FF5252 100%);color:white;font-size:15px;font-weight:600;cursor:pointer;animation:bounceButton 2s infinite}.rsvp-deadline{margin-top:10px;color:#FF6B6B;font-size:12px}.footer{background:linear-gradient(135deg,#FF6B6B 0%,#FF5252 100%);color:white;text-align:center;padding:16px;font-family:'Fredoka',sans-serif}
-.balloon,.sparkle,.elephant,.teddy,.cake{position:absolute;animation-timing-function:ease-in-out;animation-iteration-count:infinite}.balloon{font-size:42px;animation:floatBalloon 8s infinite}.balloon1{left:5%;top:10%}.balloon2{right:8%;top:18%;animation-delay:2s}.balloon3{left:12%;bottom:20%;animation-delay:4s}.sparkle{font-size:22px;animation:twinkle 3s infinite}.sparkle1{top:22%;left:80%}.sparkle2{top:70%;left:10%;animation-delay:1s}.sparkle3{top:40%;right:8%;animation-delay:2s}.elephant{font-size:42px;animation:elephantFloat 10s infinite}.elephant1{bottom:8%;left:5%}.elephant2{top:55%;right:3%;animation-delay:3s}.teddy{font-size:36px;top:30%;left:2%;animation:teddyBounce 5s infinite}.cake{font-size:38px;bottom:15%;right:8%;animation:cakeSpin 8s infinite}.confetti-container::before{content:'🎊 🎉 ✨ 🎊 🎉 ✨';position:fixed;left:0;top:-10%;width:100%;font-size:24px;animation:confettiFall 12s linear infinite;opacity:.7}
+.balloon,.sparkle,.elephant,.teddy,.cake{position:absolute;animation-timing-function:ease-in-out;animation-iteration-count:infinite}.balloon{font-size:42px;animation:floatBalloon 8s infinite}.balloon1{left:5%;top:10%}.balloon2{right:8%;top:18%;animation-delay:2s}.balloon3{left:12%;bottom:20%;animation-delay:4s}.sparkle{font-size:22px;animation:twinkle 3s infinite}.sparkle1{top:22%;left:80%}.sparkle2{top:70%;left:10%;animation-delay:1s}.sparkle3{top:40%;right:8%;animation-delay:2s}.elephant{font-size:42px;animation:elephantFloat 10s infinite}.elephant1{bottom:8%;left:5%}.elephant2{top:55%;right:3%;animation-delay:3s}.teddy{font-size:36px;top:30%;left:2%;animation:teddyBounce 5s infinite}.cake{font-size:38px;bottom:15%;right:8%;animation:cakeSpin 8s infinite}.confetti-container::before{
+    content:"🎊 🎉 ✨";
+    position:absolute;
+    left:0;
+    top:-50px;
+    width:100%;
+    font-size:20px;
+    animation:confettiFall 10s linear infinite;
+    opacity:.5;
+    pointer-events:none;
+}
 @keyframes floatBalloon{0%,100%{transform:translateY(0)}50%{transform:translateY(-25px)}}@keyframes twinkle{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:1;transform:scale(1.3)}}@keyframes elephantFloat{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-15px) rotate(4deg)}}@keyframes teddyBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}@keyframes cakeSpin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}@keyframes pulseTitle{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}@keyframes bounceButton{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}@keyframes photoGlow{0%,100%{box-shadow:0 8px 20px rgba(0,0,0,.12)}50%{box-shadow:0 8px 28px rgba(255,107,107,.45)}}@keyframes confettiFall{0%{transform:translateY(-10%)}100%{transform:translateY(120vh)}}
 </style>
 </head>
