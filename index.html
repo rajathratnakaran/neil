@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta property="og:title" content="Neil Turns One! 🎂">
+    <meta property="og:description" content="Join us to celebrate Neil's 1st Birthday 💛">
+    <meta property="og:image" content="YOUR_IMAGE_URL">
+    <meta property="og:type" content="website">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Neil's 1st Birthday 💛</title>
@@ -249,121 +253,34 @@
 </head>
 <body>
 
-<iframe
-    id="musicFrame"
-    src="https://drive.google.com/file/d/1Y2ai-AGCDhLpt_oVYiuASKiByUgvLbHA/preview"
-    width="300"
-    height="60"
-    allow="autoplay"
-    style="position:absolute; left:-9999px;">
-</iframe>
-
-<div class="invite-wrapper">
-
-    <img class="balloon balloon-1" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 140'%3E%3Ccircle cx='50' cy='40' r='35' fill='%23FF6B6B'/%3E%3C/svg%3E">
-    <img class="balloon balloon-2" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 140'%3E%3Ccircle cx='50' cy='40' r='35' fill='%23FFD700'/%3E%3C/svg%3E">
-
-    <div class="header">
-        <button class="music-btn" id="musicBtn">🔊</button>
-        <div class="header-title">ONE!</div>
-        <div class="header-subtitle">Neil is turning 1 💛</div>
-    </div>
-
-    <div class="photo-section">
-        <div class="photo-card">
-            <div class="photo-frame" id="photoContainer"></div>
-
-            <div class="guest-greeting">Dear Niya 💛</div>
-
-            <div class="personal-message">
-                You were there when Neil took his first steps — now come celebrate his first year with us! 🎈
-            </div>
-        </div>
-    </div>
-
-    <div class="divider"></div>
-
-    <div class="invitation-text">
-        <div class="invitation-intro">
-            <strong>Radhika & Rajath</strong> joyfully invite you to celebrate the first year of their little sunshine ☀️
-        </div>
-    </div>
-
-    <div class="details-section">
-        <div class="details-title">🎈 Party Details</div>
-
-        <div class="detail-item">
-            <div class="detail-icon">📅</div>
-            <div>
-                <div class="detail-label">Date</div>
-                <div class="detail-value">Saturday, 23 May 2026</div>
-            </div>
-        </div>
-
-        <div class="detail-item">
-            <div class="detail-icon">⏰</div>
-            <div>
-                <div class="detail-label">Time</div>
-                <div class="detail-value">12:00 PM onwards</div>
-            </div>
-        </div>
-
-        <div class="detail-item">
-            <div class="detail-icon">📍</div>
-            <div>
-                <div class="detail-label">Venue</div>
-                <div class="detail-value">Maize & Malt</div>
-                <div>Mahadevapura, Bengaluru</div>
-            </div>
-        </div>
-
-        <div class="detail-item">
-            <div class="detail-icon">🎂</div>
-            <div>
-                <div class="detail-label">Highlights</div>
-                <div class="detail-value">Cake, Games, Photos & Lots of Love! 💕</div>
-            </div>
-        </div>
-    </div>
-
-    <div class="rsvp-section">
-        <div class="rsvp-title">Can't wait to see you! 🎉</div>
-        <button class="rsvp-button" onclick="handleRSVP()">RSVP on WhatsApp 💛</button>
-        <div class="rsvp-deadline">Please confirm by 20th May</div>
-    </div>
-
-    <div class="footer">
-        ✨ Made with Love for Neil ✨
-    </div>
-</div>
-
-<script>
-  const musicBtn = document.getElementById('musicBtn');
+const bgMusic = document.getElementById('bgMusic');
+const musicBtn = document.getElementById('musicBtn');
 const photoContainer = document.getElementById('photoContainer');
-const musicFrame = document.getElementById('musicFrame');
-
-let isPlaying = false;
 
 const photoUrl =
-    'https://drive.google.com/thumbnail?id=19CR79catCbb6H82Q6Q9mQ0P5VWZWeNkD&sz=w1200';
+    'https://drive.google.com/uc?export=view&id=19CR79catCbb6H82Q6Q9mQ0P5VWZWeNkD';
 
 photoContainer.innerHTML = `<img src="${photoUrl}" alt="Neil">`;
 
-musicBtn.addEventListener('click', function(e) {
+musicBtn.addEventListener('click', async function(e) {
     e.stopPropagation();
 
-    if (!isPlaying) {
-        musicFrame.src =
-            'https://drive.google.com/file/d/1Y2ai-AGCDhLpt_oVYiuASKiByUgvLbHA/preview?autoplay=1';
+    try {
+        if (bgMusic.paused) {
+            bgMusic.currentTime = 0;
+            await bgMusic.play();
 
-        musicBtn.textContent = '⏸️';
-        musicBtn.classList.add('playing');
-        isPlaying = true;
-    } else {
-        musicFrame.src = '';
-        musicBtn.textContent = '🔊';
-        musicBtn.classList.remove('playing');
-        isPlaying = false;
+            musicBtn.textContent = '⏸️';
+            musicBtn.classList.add('playing');
+        } else {
+            bgMusic.pause();
+
+            musicBtn.textContent = '🔊';
+            musicBtn.classList.remove('playing');
+        }
+    } catch (err) {
+        console.error('Audio error:', err);
+        alert('Music could not play on this browser.');
     }
 });
 
@@ -376,6 +293,7 @@ function handleRSVP() {
         `https://wa.me/918589812323?text=${message}`,
         '_blank'
     );
+
 }
 </script>
 
