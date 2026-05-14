@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Neil's 1st Birthday 💛</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -75,7 +75,6 @@
             cursor: pointer;
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
             z-index: 9999;
-            pointer-events: auto;
         }
 
         .music-btn.playing {
@@ -243,20 +242,15 @@
         }
 
         @media (max-width: 480px) {
-            .header-title {
-                font-size: 40px;
-            }
-
-            .guest-greeting {
-                font-size: 22px;
-            }
+            .header-title { font-size: 40px; }
+            .guest-greeting { font-size: 22px; }
         }
     </style>
 </head>
 <body>
 
 <audio id="bgMusic" preload="auto">
-    <source src="https://docs.google.com/uc?export=download&id=181kdZ887LdO-YrkcYR7a9CP0FvJdmFVC" type="audio/mpeg">
+    <source src="https://drive.google.com/uc?export=open&id=1Y2ai-AGCDhLpt_oVYiuASKiByUgvLbHA" type="audio/mpeg">
 </audio>
 
 <div class="invite-wrapper">
@@ -344,7 +338,7 @@
     const photoContainer = document.getElementById('photoContainer');
 
     const photoUrl =
-        'https://lh3.googleusercontent.com/d/AF1QipOFRiQIsZgzY3yz-q5QJOnPbpAQsp27HL5dquPV=w1200';
+        'https://drive.google.com/thumbnail?id=19CR79catCbb6H82Q6Q9mQ0P5VWZWeNkD&sz=w1200';
 
     photoContainer.innerHTML = `<img src="${photoUrl}" alt="Neil">`;
 
@@ -359,7 +353,7 @@
                 })
                 .catch(err => {
                     console.error(err);
-                    alert('Music playback blocked. Confirm Google Drive file is shared as "Anyone with the link".');
+                    alert('Unable to play music. Check Google Drive sharing settings.');
                 });
         } else {
             bgMusic.pause();
