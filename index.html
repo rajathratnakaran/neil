@@ -249,8 +249,8 @@
 </head>
 <body>
 
-<audio id="bgMusic" preload="auto">
-    <source src="https://drive.google.com/uc?export=open&id=1Y2ai-AGCDhLpt_oVYiuASKiByUgvLbHA" type="audio/mpeg">
+<audio id="bgMusic" preload="metadata" crossorigin="anonymous">
+    <source src="https://docs.google.com/uc?export=open&id=1Y2ai-AGCDhLpt_oVYiuASKiByUgvLbHA" type="audio/mpeg">
 </audio>
 
 <div class="invite-wrapper">
@@ -333,45 +333,44 @@
 </div>
 
 <script>
-    const bgMusic = document.getElementById('bgMusic');
-    const musicBtn = document.getElementById('musicBtn');
-    const photoContainer = document.getElementById('photoContainer');
+   const bgMusic = document.getElementById('bgMusic');
+const musicBtn = document.getElementById('musicBtn');
+const photoContainer = document.getElementById('photoContainer');
 
-    const photoUrl =
-        'https://drive.google.com/thumbnail?id=19CR79catCbb6H82Q6Q9mQ0P5VWZWeNkD&sz=w1200';
+const photoUrl =
+    'https://drive.google.com/thumbnail?id=19CR79catCbb6H82Q6Q9mQ0P5VWZWeNkD&sz=w1200';
 
-    photoContainer.innerHTML = `<img src="${photoUrl}" alt="Neil">`;
+photoContainer.innerHTML = `<img src="${photoUrl}" alt="Neil">`;
 
-    musicBtn.addEventListener('click', function(e) {
-        e.stopPropagation();
+musicBtn.addEventListener('click', async function(e) {
+    e.stopPropagation();
 
+    try {
         if (bgMusic.paused) {
-            bgMusic.play()
-                .then(() => {
-                    musicBtn.textContent = '⏸️';
-                    musicBtn.classList.add('playing');
-                })
-                .catch(err => {
-                    console.error(err);
-                    alert('Unable to play music. Check Google Drive sharing settings.');
-                });
+            await bgMusic.play();
+            musicBtn.textContent = '⏸️';
+            musicBtn.classList.add('playing');
         } else {
             bgMusic.pause();
             musicBtn.textContent = '🔊';
             musicBtn.classList.remove('playing');
         }
-    });
-
-    function handleRSVP() {
-        const message = encodeURIComponent(
-            "Hi Radhika & Rajath! I'm coming to Neil's 1st Birthday party! 🎉🎂"
-        );
-
-        window.open(
-            `https://wa.me/918589812323?text=${message}`,
-            '_blank'
-        );
+    } catch (err) {
+        console.error('Audio error:', err);
+        alert('Google Drive audio playback failed.');
     }
+});
+
+function handleRSVP() {
+    const message = encodeURIComponent(
+        "Hi Radhika & Rajath! I'm coming to Neil's 1st Birthday party! 🎉🎂"
+    );
+
+    window.open(
+        `https://wa.me/918589812323?text=${message}`,
+        '_blank'
+    );
+}
 </script>
 
 </body>
