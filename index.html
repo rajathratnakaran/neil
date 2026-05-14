@@ -7,8 +7,8 @@
 <meta property="og:title" content="Neil Turns One! 🎂" />
 <meta property="og:description" content="23 May | 12 PM | Maize & Malt 💛" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://rajathratnakaran.github.io/neil-invite-site/" />
-<meta property="og:image" content="https://rajathratnakaran.github.io/neil-invite-site/preview.jpg" />
+<meta property="og:url" content="https://rajathratnakaran.github.io/neil/" />
+<meta property="og:image" content="https://rajathratnakaran.github.io/neil/preview.jpg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -102,8 +102,8 @@ body{font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#fff6ea 
 <div class="footer">✨ Made with Love for Neil ✨</div>
 </div>
 <script>
-const defaultPhoto='https://rajathratnakaran.github.io/neil-invite-site/Neil.jpeg';
-const guests={niya:{name:'Niya',message:'You were there when Neil took his first steps — now come celebrate his first year with us! 🎈',mediaType:'photo',mediaUrl:'https://rajathratnakaran.github.io/neil-invite-site/Neil%27s%20Niya%20chechi.jpeg'},default:{name:'Friend',message:'Join us as we celebrate Neil turning ONE! 💛',mediaType:'photo',mediaUrl:defaultPhoto}};
+const defaultPhoto='https://rajathratnakaran.github.io/neil/Neil.jpeg';
+const guests={niya:{name:'Niya',message:'You were there when Neil took his first steps — now come celebrate his first year with us! 🎈',mediaType:'photo',mediaUrl:'https://rajathratnakaran.github.io/neil/Neil%27s%20Niya%20chechi.jpeg'},default:{name:'Friend',message:'Join us as we celebrate Neil turning ONE! 💛',mediaType:'photo',mediaUrl:defaultPhoto}};
 const params=new URLSearchParams(window.location.search);
 const guest=guests[params.get('guest')]||guests.default;
 const greeting=document.getElementById('guestGreeting');const fullText=`Dear ${guest.name} 💛`;greeting.textContent='';let i=0;function typeGreeting(){if(i<fullText.length){greeting.textContent+=fullText.charAt(i);i++;setTimeout(typeGreeting,70);}}typeGreeting();
