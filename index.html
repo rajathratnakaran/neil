@@ -111,8 +111,9 @@ body{font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#fff6ea 
 <div class="footer">✨ Made with Love for Neil ✨</div>
 </div>
 <script>
-const defaultPhoto=['https://rajathratnakaran.github.io/neil/Neil.jpeg','https://rajathratnakaran.github.io/neil/Neil%27s%20Niya%20chechi.jpeg'];
+const defaultPhoto=['https://rajathratnakaran.github.io/neil/Neil.jpeg'];
 const guests={niya:{name:'Niya',message:'You were there when Neil took his first steps — now come celebrate his first year with us! 🎈',mediaType:'photo',mediaUrls:['https://rajathratnakaran.github.io/neil/Neil%27s%20Niya%20chechi.jpeg']},
+              gokul:{name:'UNC',message:'Amma said Batman ain’t real, what does she know? LOL!',mediaType:'photo',mediaUrls:['https://rajathratnakaran.github.io/neil/ng1.jpeg','https://rajathratnakaran.github.io/neil/ng2.jpeg','https://rajathratnakaran.github.io/neil/ng3.jpeg','https://rajathratnakaran.github.io/neil/ng4.jpeg','https://rajathratnakaran.github.io/neil/ng5.jpeg','https://rajathratnakaran.github.io/neil/ng6.jpeg']},
               default:{name:'Friend',message:'Join us as we celebrate Neil turning ONE! 💛',mediaType:'photo',mediaUrls:defaultPhoto}};
 const params=new URLSearchParams(window.location.search);
 const guest=guests[params.get('guest')]||guests.default;
