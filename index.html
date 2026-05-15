@@ -35,7 +35,8 @@ body{font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#fff6ea 
   height:100%;
   object-fit:cover;
   border-radius:18px;
-  transition:opacity 0.4s ease-in-out;
+  opacity:1;
+  transition:opacity 0.8s ease-in-out;
 }
 .guest-greeting{font-family:'Fredoka',sans-serif;font-size:28px;color:#FF6B6B;margin-bottom:10px}
 .personal-message{font-size:14px;color:#5D4037;line-height:1.7;font-style:italic}
@@ -141,20 +142,22 @@ photoContainer.innerHTML = `
 
 if (guest.mediaUrls.length > 1) {
   let currentSlide = 0;
+  const img = document.getElementById('slideshowImage');
 
   setInterval(() => {
-    currentSlide = (currentSlide + 1) % guest.mediaUrls.length;
-
-    const img = document.getElementById('slideshowImage');
-
-    img.style.opacity = 0;
+    img.style.opacity = "0";
 
     setTimeout(() => {
+      currentSlide = (currentSlide + 1) % guest.mediaUrls.length;
       img.src = guest.mediaUrls[currentSlide];
-      img.style.opacity = 1;
-    }, 400);
 
-  }, 3000);
+      setTimeout(() => {
+        img.style.opacity = "1";
+      }, 100);
+
+    }, 800);
+
+  }, 4500);
 }
 function handleRSVP(){const message=encodeURIComponent("Hi Radhika & Rajath! Looking forward to joining Neil's birthday lunch celebration 💛🎂");window.open(`https://wa.me/918589812323?text=${message}`,'_blank');}
 </script>
