@@ -29,6 +29,14 @@ body{font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#fff6ea 
 .photo-card{background:linear-gradient(135deg,#FFF8F3 0%,#FFEEE0 100%);border:3px dashed #FFD7B5;border-radius:22px;padding:18px;text-align:center}
 .photo-frame{width:100%;max-width:290px;height:290px;margin:0 auto 16px;border-radius:18px;overflow:hidden;background:#eee;border:4px solid #fff;box-shadow:0 8px 20px rgba(0,0,0,.12);animation:photoGlow 4s ease-in-out infinite, photoFloat 7s ease-in-out infinite;transform-origin:center center}
 .photo-frame img{width:100%;height:100%;object-fit:cover}
+
+#slideshowImage{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:18px;
+  transition:opacity 0.4s ease-in-out;
+}
 .guest-greeting{font-family:'Fredoka',sans-serif;font-size:28px;color:#FF6B6B;margin-bottom:10px}
 .personal-message{font-size:14px;color:#5D4037;line-height:1.7;font-style:italic}
 .memory-btn{margin-top:16px;display:inline-block;background:#FF6B6B;color:#fff;text-decoration:none;padding:12px 18px;border-radius:12px;font-weight:600}
@@ -102,13 +110,52 @@ body{font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#fff6ea 
 <div class="footer">✨ Made with Love for Neil ✨</div>
 </div>
 <script>
-const defaultPhoto='https://rajathratnakaran.github.io/neil/Neil.jpeg';
-const guests={niya:{name:'Niya',message:'You were there when Neil took his first steps — now come celebrate his first year with us! 🎈',mediaType:'photo',mediaUrl:'https://rajathratnakaran.github.io/neil/Neil%27s%20Niya%20chechi.jpeg'},default:{name:'Friend',message:'Join us as we celebrate Neil turning ONE! 💛',mediaType:'photo',mediaUrl:defaultPhoto}};
+const defaultPhoto=['https://rajathratnakaran.github.io/neil/Neil.jpeg','https://rajathratnakaran.github.io/neil/Neil%27s%20Niya%20chechi.jpeg'];
+const guests={niya:{name:'Niya',message:'You were there when Neil took his first steps — now come celebrate his first year with us! 🎈',mediaType:'photo',mediaUrls:['https://rajathratnakaran.github.io/neil/Neil%27s%20Niya%20chechi.jpeg']},
+              default:{name:'Friend',message:'Join us as we celebrate Neil turning ONE! 💛',mediaType:'photo',mediaUrls:defaultPhoto}};
 const params=new URLSearchParams(window.location.search);
 const guest=guests[params.get('guest')]||guests.default;
-const greeting=document.getElementById('guestGreeting');const fullText=`Dear ${guest.name} 💛`;greeting.textContent='';let i=0;function typeGreeting(){if(i<fullText.length){greeting.textContent+=fullText.charAt(i);i++;setTimeout(typeGreeting,70);}}typeGreeting();
-document.getElementById('guestMessage').textContent=guest.message;
-document.getElementById('photoContainer').innerHTML=`<img src="${guest.mediaUrl}" alt="${guest.name}">`;
+const greeting = document.getElementById('guestGreeting');
+const fullText = `Dear ${guest.name} 💛`;
+
+greeting.textContent = '';
+let i = 0;
+
+function typeGreeting() {
+  if (i < fullText.length) {
+    greeting.textContent += fullText.charAt(i);
+    i++;
+    setTimeout(typeGreeting, 70);
+  }
+}
+
+typeGreeting();
+
+document.getElementById('guestMessage').textContent = guest.message;
+
+const photoContainer = document.getElementById('photoContainer');
+
+photoContainer.innerHTML = `
+  <img id="slideshowImage" src="${guest.mediaUrls[0]}" alt="${guest.name}">
+`;
+
+if (guest.mediaUrls.length > 1) {
+  let currentSlide = 0;
+
+  setInterval(() => {
+    currentSlide = (currentSlide + 1) % guest.mediaUrls.length;
+
+    const img = document.getElementById('slideshowImage');
+
+    img.style.opacity = 0;
+
+    setTimeout(() => {
+      img.src = guest.mediaUrls[currentSlide];
+      img.style.opacity = 1;
+    }, 400);
+
+  }, 3000);
+}
 function handleRSVP(){const message=encodeURIComponent("Hi Radhika & Rajath! Looking forward to joining Neil's birthday lunch celebration 💛🎂");window.open(`https://wa.me/918589812323?text=${message}`,'_blank');}
 </script>
 </body>
